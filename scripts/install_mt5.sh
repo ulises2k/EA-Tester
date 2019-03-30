@@ -3,7 +3,7 @@
 [ -n "$OPT_NOERR" ] || set -e
 [ -n "$OPT_TRACE" ] && set -x
 CWD="$(cd -P -- "$(dirname -- "$0")" 2>/dev/null; pwd -P)"
-WURL="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
+WURL=${WURL:-https://raw.githubusercontent.com/kenorb-contrib/winetricks/master/src/winetricks}
 
 # Load the shell functions.
 . "$CWD/.funcs.inc.sh"

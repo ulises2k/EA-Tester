@@ -3,17 +3,18 @@
 [ -n "$OPT_NOERR" ] || set -e
 [ -n "$OPT_TRACE" ] && set -x
 CWD="$(cd -P -- "$(dirname -- "$0")" 2>/dev/null && pwd -P || pwd -P)"
-WURL=${WURL:-https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks}
+WURL=${WURL:-https://raw.githubusercontent.com/kenorb-contrib/winetricks/master/src/winetricks}
 
 # Load the shell functions.
 . "$CWD/.funcs.inc.sh"
 . "$CWD/.funcs.cmds.inc.sh"
 
-echo "Installing winhttp..." >&2
-sh -s winhttp < <(wget -qO- $WURL)
+# Prints information of the window status in the background.
+set_display
+live_stats &
 
 echo "Installing platform..." >&2
-sh -s "$CWD"/install_mt4.verb < <(wget -qO- $WURL)
+sh -xs mt4 < <(wget -qO- $WURL)
 
 echo "Installation successful." >&2
 echo "${BASH_SOURCE[0]} done." >&2
