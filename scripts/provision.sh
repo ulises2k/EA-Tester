@@ -79,6 +79,7 @@ case "$(uname -s)" in
     # Install necessary packages
     apt-get install -qy language-pack-en                                          # Language pack to prevent an invalid locale.
     apt-get install -qy less binutils coreutils moreutils cabextract zip unzip    # Common CLI utils.
+    apt-get install -qy p7zip-full
     apt-get install -qy imagemagick                                               # ImageMagick.
     apt-get install -qy dbus                                                      # Required for Debian AMI on EC2.
     apt-get install -qy git realpath links html2text tree pv bc                   # Required commands.
