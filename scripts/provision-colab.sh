@@ -106,7 +106,14 @@ case "$(uname -s)" in
 
     # Install wine and dependencies.
     # @see: https://wiki.winehq.org/Ubuntu
-    apt-get install -qq wine32 wine64 wine-stable    # Install Wine.
+    #apt-get install -qq wine32 wine64 wine-stable    # Install Wine.
+    dpkg --add-architecture i386
+    wget -nc https://dl.winehq.org/wine-builds/winehq.key -O winehq.key
+    apt-key add winehq.key
+    add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -cs) main'
+    sudo apt update
+    apt install --install-recommends winehq-stable
+
     apt-get install -qq winbind                      # Install Wine recommended libraries.
     apt-get install -qq xvfb xdotool x11-utils xterm # Virtual frame buffer and X11 utils.
 
