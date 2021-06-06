@@ -11,7 +11,8 @@ initialize
 
 # Installs both platforms.
 install_mt 4.0.0.1280 /opt
-install_mt 5.0.0.2361 /opt
+#install_mt 5.0.0.2361 /opt
+install_mt 5 /opt
 
 # Load variables.
 . ../.vars.inc.sh

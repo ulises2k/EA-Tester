@@ -14,7 +14,7 @@ export WINETRICKS_DOWNLOADER=curl
 
 # Initializing
 echo "Initializing..." >&2
-#curl -s ifconfig.me/all.json
+curl -s ifconfig.me/all.json
 
 # Load the shell functions.
 . "$CWD/.funcs.inc.sh"

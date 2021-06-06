@@ -2,7 +2,7 @@
 
 w_metadata install_mt4 apps \
     title="MetaTrader 4" \
-    year="2020" \
+    year="2021" \
     media="download"
 
 load_install_mt4()
