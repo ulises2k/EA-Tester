@@ -7,7 +7,7 @@ w_metadata install_mt4 apps \
 
 load_install_mt4()
 {
-    w_download ${MT_URL:-"https://download.mql5.com/cdn/web/8472/mt4/xmuk4setup.exe"}
+    w_download ${MT_URL:-"https://download.mql5.com/cdn/web/robomarkets.ltd/mt4/roboforex4setup.exe"}
 
     if w_workaround_wine_bug 7156 "${title} needs wingdings.ttf, installing opensymbol"
     then

@@ -32,7 +32,7 @@ echo "Installing winhttp..." >&2
 winetricks -q winhttp
 
 echo "Installing .NET..." >&2
-winetricks -q dotnet472
+winetricks -q dotnet48
 
 echo "Installing platform..." >&2
 winetricks -q "$CWD"/verb/install_mt5.verb
