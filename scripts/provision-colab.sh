@@ -75,8 +75,8 @@ case "$(uname -s)" in
     )
 
     # Install curl and wget if not present.
-    command -v curl &> /dev/null || apt-get install -qq curl
-    command -v wget &> /dev/null || apt-get install -qq wget
+    command -v curl &> /dev/null || apt-get install -qq -y curl
+    command -v wget &> /dev/null || apt-get install -qq -y wget
 
     # Install Charles proxy.
     if (("$PROVISION_CHARLES")); then
@@ -140,21 +140,21 @@ case "$(uname -s)" in
 
     # Install Charles proxy.
     if (("$PROVISION_CHARLES")); then
-      apt-get install -qq charles-proxy3
+      apt-get install -qq -y charles-proxy3
     fi
 
     # Install Mono.
     if (("$PROVISION_MONO")); then
       echo "Installing Wine Mono..." >&2
-      apt-get install -qq wine-mono
+      apt-get install -qq -y wine-mono
       su - $user -c "
         set -x
         export DISPLAY=:1.0
         export WINEDLLOVERRIDES=mscoree,mshtml=
         echo \$DISPLAY
         xdpyinfo &>/dev/null || (! pgrep -a Xvfb && Xvfb \$DISPLAY -screen 0 1024x768x16) &
-        wget -qP /tmp -nc 'http://dl.winehq.org/wine/wine-mono/4.8.3/wine-mono-4.8.3.msi' && \
-        wine64 msiexec /i /tmp/wine-mono-4.8.3.msi
+        wget -qP /tmp -nc 'https://dl.winehq.org/wine/wine-mono/6.2.0/wine-mono-6.2.0-x86.msi' && \
+        wine64 msiexec /i /tmp/wine-mono-6.2.0-x86.msi
         rm -v /tmp/*.msi && \
         (pkill Xvfb || true)
       "
@@ -174,12 +174,12 @@ case "$(uname -s)" in
     fi
 
     # Install other CLI tools.
-    apt-get install -qq less binutils coreutils moreutils # Common CLI utils.
-    apt-get install -qq cabextract zip unzip p7zip-full   # Compression tools.
-    apt-get install -qq git links tree pv bc              # Required commands.
-    apt-get install -qq html2text jq                      # Required parsers.
-    apt-get install -qq imagemagick                       # ImageMagick.
-    apt-get install -qq vim                               # Vim.
+    apt-get install -qq -y less binutils coreutils moreutils # Common CLI utils.
+    apt-get install -qq -y cabextract zip unzip p7zip-full   # Compression tools.
+    apt-get install -qq -y git links tree pv bc              # Required commands.
+    apt-get install -qq -y html2text jq                      # Required parsers.
+    apt-get install -qq -y imagemagick                       # ImageMagick.
+    apt-get install -qq -y vim                               # Vim.
 
     # Configures ImageMagick.
     # See: https://stackoverflow.com/q/42928765
