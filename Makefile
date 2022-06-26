@@ -23,7 +23,7 @@ docker-push: docker-login docker-tag
 	docker images
 	docker push $(IMAGE_ORG)/$(IMAGE_NAME):$(DOCKER_TAG)
 docker-run:
-	docker run -it ${IMAGE_NAME} bash
+	docker run -it ${IMAGE_NAME}:$(DOCKER_TAG) bash
 docker-save:
 	docker save ${IMAGE_NAME} | gzip > $(DOCKER_TAR)
 docker-clean:

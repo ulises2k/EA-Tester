@@ -68,7 +68,7 @@ FROM ea-tester-base AS ea-tester-with-mt5
 ARG MT_VER=5
 ENV MT_VER $MT_VER
 RUN eval.sh install_mt $MT_VER
-#RUN run_backtest.sh -s PrintPaths -v
+RUN run_backtest.sh -s PrintPaths -v
 
 # Clean up.
 #RUN eval.sh clean_bt
@@ -76,7 +76,7 @@ RUN eval.sh install_mt $MT_VER
 #RUN eval.sh clean_files
 
 # Final EA Tester image.
-FROM ea-tester-with-mt4 as ea-tester
+#FROM ea-tester-with-mt4 as ea-tester
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -85,10 +85,10 @@ ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="EA-Tester" \
       org.label-schema.description="Headless Forex backtesting for MetaTrader platform" \
-      org.label-schema.url="https://github.com/EA31337/EA-Tester" \
+      org.label-schema.url="https://github.com/ulises2k/EA-Tester" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/EA31337/EA-Tester" \
-      org.label-schema.vendor="FX31337" \
+      org.label-schema.vcs-url="https://github.com/ulises2k/EA-Tester" \
+      org.label-schema.vendor="ulises2k" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"
 
